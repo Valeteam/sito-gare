@@ -37,7 +37,7 @@
 
 <footer><div class="wrap">
   Le mappe aprono il percorso da Thiene verso la location, come nel file originale.
-  <details>
+  <details id="gestione">
     <summary>Gestione dati</summary>
     <p>Le modifiche fatte da qui restano salvate in questo browser. Per renderle definitive esporta <code>data.js</code> e sostituisci quello nella cartella del sito (le immagini aggiunte da qui sono incluse nel file).</p>
     <div class="tools">
@@ -45,6 +45,7 @@
       <button class="chip-btn" id="reset" type="button">Ripristina i dati originali</button>
     </div>
   </details>
+  <div class="tools"><button class="chip-btn" id="lockbtn" type="button" hidden>Sblocca modifiche</button></div>
 </div></footer>
 
 <dialog id="lb"><button type="button" id="lbx">Chiudi</button><img id="lbimg" alt=""></dialog>
@@ -69,6 +70,13 @@
     <button type="button" id="f-cancel">Annulla</button>
     <button type="submit" class="save">Salva</button>
   </div>
+</form></dialog>
+
+<dialog id="pw"><form id="pwform" method="dialog">
+  <h2>Sblocca modifiche</h2>
+  <div class="f"><label for="pw-in">Password</label><input id="pw-in" type="password" autocomplete="current-password"></div>
+  <p class="err" id="pw-err" hidden>Password errata.</p>
+  <div class="actions"><button type="button" id="pw-cancel">Annulla</button><button type="submit" class="save">Sblocca</button></div>
 </form></dialog>
 
 <script src="data.js"></script>

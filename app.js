@@ -1,7 +1,13 @@
 /* Calendario Rally 2026 – logica
    Dati base: data.js (GARE, ALTRE_GARE). Le modifiche fatte dall'interfaccia
    vengono salvate in localStorage e possono essere esportate in un nuovo data.js. */
+/* ===== PASSWORD PER LE MODIFICHE =====
+   Scrivi qui la password. Lascia "" per non usarla (modifiche sempre disponibili).
+   Attenzione: nel JS è leggibile da chiunque apra il file, quindi ferma solo i curiosi. */
+const PASSWORD_MODIFICHE = "elcorra";
+
 const KEY = "rally2026:gare";
+const KEY_OK = "rally2026:sbloccato";
 const MESI = ["gen","feb","mar","apr","mag","giu","lug","ago","set","ott","nov","dic"];
 const TIPI = { moderne: "Moderne", storiche: "Storiche" };
 const MAX_LOC = 3;
@@ -10,6 +16,31 @@ const $ = id => document.getElementById(id);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
 const toDate = s => { const [y, m, g] = s.split("-").map(Number); return new Date(y, m - 1, g); };
 const clone = o => JSON.parse(JSON.stringify(o));
+
+/* ---------- blocco modifiche ---------- */
+let sbloccato = !PASSWORD_MODIFICHE;
+try { if (sessionStorage.getItem(KEY_OK) === "1") sbloccato = true; } catch (e) {}
+
+function aggiornaBlocco() {
+  document.body.classList.toggle("bloccato", !sbloccato);
+  $("lockbtn").hidden = !PASSWORD_MODIFICHE;
+  $("lockbtn").textContent = sbloccato ? "Blocca modifiche" : "Sblocca modifiche";
+}
+function impostaSblocco(v) {
+  sbloccato = v;
+  try { v ? sessionStorage.setItem(KEY_OK, "1") : sessionStorage.removeItem(KEY_OK); } catch (e) {}
+  aggiornaBlocco();
+}
+$("lockbtn").addEventListener("click", () => {
+  if (sbloccato) { impostaSblocco(false); return; }
+  $("pw-in").value = ""; $("pw-err").hidden = true; $("pw").showModal(); $("pw-in").focus();
+});
+$("pw-cancel").addEventListener("click", () => $("pw").close());
+$("pwform").addEventListener("submit", e => {
+  e.preventDefault();
+  if ($("pw-in").value === PASSWORD_MODIFICHE) { $("pw").close(); impostaSblocco(true); }
+  else { $("pw-err").hidden = false; $("pw-in").select(); }
+});
 
 /* ---------- dati ---------- */
 let gare = load();
@@ -149,6 +180,7 @@ function disegnaLocEditor() {
 }
 
 function apriEditor(id) {
+  if (!sbloccato) return;
   const g = id ? gare.find(x => x.id === id) : null;
   const loc = clone(g?.location || []);
   while (loc.length < MAX_LOC) loc.push({ link: "", img: "" });
@@ -189,6 +221,7 @@ $("f-locs").addEventListener("click", e => {
 
 $("form").addEventListener("submit", e => {
   e.preventDefault();
+  if (!sbloccato) return;
   const nome = $("f-nome").value.trim();
   if (!nome) { $("f-nome").focus(); return; }
   let ini = $("f-ini").value, fin = $("f-fin").value || ini;
@@ -208,12 +241,14 @@ $("form").addEventListener("submit", e => {
 });
 
 $("f-del").addEventListener("click", () => {
+  if (!sbloccato) return;
   const g = gare.find(x => x.id === bozza.id);
   if (g && confirm(`Eliminare “${g.nome}”?`)) { gare = gare.filter(x => x.id !== g.id); save(); ed.close(); render(); }
 });
 
 /* ---------- esporta / ripristina ---------- */
 $("export").addEventListener("click", () => {
+  if (!sbloccato) return;
   const testo = "// Dati del calendario. tipo: \"moderne\" e/o \"storiche\". Date AAAA-MM-GG.\n" +
     "const GARE = " + JSON.stringify(sorted(), null, 2) + ";\n\n" +
     "const ALTRE_GARE = " + JSON.stringify(ALTRE_GARE, null, 2) + ";\n";
@@ -222,9 +257,11 @@ $("export").addEventListener("click", () => {
   a.download = "data.js"; a.click(); URL.revokeObjectURL(a.href);
 });
 $("reset").addEventListener("click", () => {
+  if (!sbloccato) return;
   if (!confirm("Annullare tutte le modifiche fatte da questa pagina e tornare ai dati di data.js?")) return;
   try { localStorage.removeItem(KEY); } catch (e) {}
   gare = clone(GARE); render();
 });
 
+aggiornaBlocco();
 render();
