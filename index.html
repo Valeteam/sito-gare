@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Calendario Rally 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <h1>Calendario rally 2026</h1>
+  <p>Gare scritte: date, località e mappe delle location.</p>
+  <div class="next" id="next" hidden></div>
+</div></header>
+
+<div class="bar"><div class="wrap">
+  <div class="search"><input id="q" type="search" placeholder="Cerca gara o provincia" aria-label="Cerca gara o provincia"></div>
+  <div class="chips" role="group" aria-label="Filtra per tipo" id="chips">
+    <button class="chip-btn" data-f="all" aria-pressed="true">Tutte</button>
+    <button class="chip-btn" data-f="moderne" aria-pressed="false">Moderne</button>
+    <button class="chip-btn" data-f="storiche" aria-pressed="false">Storiche</button>
+  </div>
+  <button class="chip-btn primary" id="add" type="button">+ Aggiungi gara</button>
+</div></div>
+
+<main><div class="wrap">
+  <p class="count" id="count" aria-live="polite"></p>
+  <div class="grid" id="grid"></div>
+  <p class="empty" id="empty" hidden>Nessuna gara corrisponde ai filtri.</p>
+
+  <section class="sec" id="undated" hidden><h2>Senza data</h2><p>Gare ancora senza una data: apri “Modifica” per inserirla.</p><div class="grid" id="grid2"></div></section>
+  <section class="sec"><h2>Altre gare segnalate</h2><p>Hanno solo la data, senza altri dettagli.</p><ul class="others" id="others"></ul></section>
+</div></main>
+
+<footer><div class="wrap">
+  Le mappe aprono il percorso da Thiene verso la location, come nel file originale.
+  <details>
+    <summary>Gestione dati</summary>
+    <p>Le modifiche fatte da qui restano salvate in questo browser. Per renderle definitive esporta <code>data.js</code> e sostituisci quello nella cartella del sito (le immagini aggiunte da qui sono incluse nel file).</p>
+    <div class="tools">
+      <button class="chip-btn" id="export" type="button">Esporta data.js</button>
+      <button class="chip-btn" id="reset" type="button">Ripristina i dati originali</button>
+    </div>
+  </details>
+</div></footer>
+
+<dialog id="lb"><button type="button" id="lbx">Chiudi</button><img id="lbimg" alt=""></dialog>
+
+<dialog id="ed"><form id="form" method="dialog">
+  <h2 id="edtitle">Gara</h2>
+  <div class="f"><label for="f-nome">Nome</label><input id="f-nome" type="text" required></div>
+  <div class="row">
+    <div class="f"><label for="f-prov">Provincia</label><input id="f-prov" type="text" maxlength="4" placeholder="VR"></div>
+    <div class="f"><label for="f-km">Km</label><input id="f-km" type="number" min="0" inputmode="numeric"></div>
+  </div>
+  <fieldset class="f" style="border:0;padding:0;margin:0"><legend>Tipo</legend>
+    <div class="checks"><label><input type="checkbox" id="f-mod"> Moderne</label><label><input type="checkbox" id="f-sto"> Storiche</label></div>
+  </fieldset>
+  <div class="row">
+    <div class="f"><label for="f-ini">Data inizio</label><input id="f-ini" type="date"></div>
+    <div class="f"><label for="f-fin">Data fine</label><input id="f-fin" type="date"></div>
+  </div>
+  <div id="f-locs" style="display:grid;gap:12px"></div>
+  <div class="actions">
+    <button type="button" class="del grow" id="f-del" hidden>Elimina gara</button>
+    <button type="button" id="f-cancel">Annulla</button>
+    <button type="submit" class="save">Salva</button>
+  </div>
+</form></dialog>
+
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
