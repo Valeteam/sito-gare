@@ -1,12 +1,13 @@
-// Dati del calendario. Modificabile a mano oppure dall’interfaccia (poi Esporta data.js).
-// tipo: array con "moderne" e/o "storiche". Date nel formato AAAA-MM-GG. img: percorso relativo o vuoto.
+// Dati del calendario. tipo: "moderne" e/o "storiche". Date AAAA-MM-GG.
 const GARE = [
   {
     "id": "rally-dei-laghi",
     "nome": "Rally dei Laghi",
     "provincia": "VA",
     "km": 315,
-    "tipo": ["moderne"],
+    "tipo": [
+      "moderne"
+    ],
     "inizio": "2026-01-28",
     "fine": "2026-02-01",
     "location": []
@@ -16,7 +17,10 @@ const GARE = [
     "nome": "Rally del Bardolino",
     "provincia": "VR",
     "km": 115,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "2026-03-13",
     "fine": "2026-03-14",
     "location": [
@@ -35,7 +39,9 @@ const GARE = [
     "nome": "Rally del Ciocco",
     "provincia": "GE",
     "km": 345,
-    "tipo": ["moderne"],
+    "tipo": [
+      "moderne"
+    ],
     "inizio": "2026-03-27",
     "fine": "2026-03-29",
     "location": []
@@ -45,7 +51,10 @@ const GARE = [
     "nome": "Paganella Rally",
     "provincia": "TN",
     "km": 138,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "2026-04-18",
     "fine": "2026-04-19",
     "location": [
@@ -64,7 +73,10 @@ const GARE = [
     "nome": "Rally FriuliVeneziaGiulia",
     "provincia": "UD",
     "km": 185,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "2026-05-01",
     "fine": "2026-05-02",
     "location": [
@@ -83,7 +95,10 @@ const GARE = [
     "nome": "Rally Benacvs",
     "provincia": "VR",
     "km": 115,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "2026-05-08",
     "fine": "2026-05-09",
     "location": []
@@ -93,7 +108,9 @@ const GARE = [
     "nome": "Valsugana Historic",
     "provincia": "TN",
     "km": 85,
-    "tipo": ["storiche"],
+    "tipo": [
+      "storiche"
+    ],
     "inizio": "2026-06-01",
     "fine": "2026-06-02",
     "location": []
@@ -103,7 +120,9 @@ const GARE = [
     "nome": "Rally Due Valli",
     "provincia": "VR",
     "km": 100,
-    "tipo": ["moderne"],
+    "tipo": [
+      "moderne"
+    ],
     "inizio": "2026-06-04",
     "fine": "2026-06-06",
     "location": [
@@ -122,7 +141,10 @@ const GARE = [
     "nome": "Rally San Martino Di Castrozza",
     "provincia": "TN",
     "km": 84,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "2026-06-19",
     "fine": "2026-06-20",
     "location": []
@@ -132,7 +154,9 @@ const GARE = [
     "nome": "Rally Roma Capitale",
     "provincia": "RM",
     "km": 550,
-    "tipo": ["moderne"],
+    "tipo": [
+      "moderne"
+    ],
     "inizio": "2026-07-03",
     "fine": "2026-07-05",
     "location": []
@@ -142,7 +166,10 @@ const GARE = [
     "nome": "Rally della Marca",
     "provincia": "TV",
     "km": 60,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "2026-07-10",
     "fine": "2026-07-11",
     "location": [
@@ -161,7 +188,9 @@ const GARE = [
     "nome": "Rally Campagnolo",
     "provincia": "VI",
     "km": 35,
-    "tipo": ["storiche"],
+    "tipo": [
+      "storiche"
+    ],
     "inizio": "2026-07-17",
     "fine": "2026-07-18",
     "location": [
@@ -180,7 +209,10 @@ const GARE = [
     "nome": "Rally Scorsè",
     "provincia": "VE",
     "km": 60,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "2026-07-25",
     "fine": "2026-07-26",
     "location": [
@@ -222,7 +254,9 @@ const GARE = [
     "nome": "Rally Valli Della Carnia",
     "provincia": "UD",
     "km": 215,
-    "tipo": ["moderne"],
+    "tipo": [
+      "moderne"
+    ],
     "inizio": "2026-08-21",
     "fine": "2026-08-22",
     "location": []
@@ -232,7 +266,10 @@ const GARE = [
     "nome": "Rally Città Di Schio",
     "provincia": "VI",
     "km": 20,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "2026-09-11",
     "fine": "2026-09-12",
     "location": [
@@ -251,7 +288,10 @@ const GARE = [
     "nome": "Rally Legend",
     "provincia": "RSM",
     "km": 300,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "2026-10-08",
     "fine": "2026-10-11",
     "location": []
@@ -261,7 +301,10 @@ const GARE = [
     "nome": "Rally Città Di Bassano",
     "provincia": "VI",
     "km": 30,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "2026-10-09",
     "fine": "2026-10-10",
     "location": [
@@ -280,7 +323,10 @@ const GARE = [
     "nome": "Rally Sanremo",
     "provincia": "IM",
     "km": 490,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "2026-10-16",
     "fine": "2026-10-18",
     "location": []
@@ -290,7 +336,10 @@ const GARE = [
     "nome": "Rally Piancavallo",
     "provincia": "PN",
     "km": 120,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "2026-10-24",
     "fine": "2026-10-25",
     "location": [
@@ -325,10 +374,13 @@ const GARE = [
   },
   {
     "id": "rally-valpolicella-e-val-dadige",
-    "nome": "Rally Valpolicella e Val d’Adige",
+    "nome": "Rally lessinia Historic",
     "provincia": "VR",
     "km": 110,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "2026-11-26",
     "fine": "2026-11-27",
     "location": [
@@ -347,7 +399,9 @@ const GARE = [
     "nome": "Prealpi Master Show",
     "provincia": "TV",
     "km": 70,
-    "tipo": ["moderne"],
+    "tipo": [
+      "moderne"
+    ],
     "inizio": "2026-12-12",
     "fine": "2026-12-13",
     "location": [
@@ -366,7 +420,10 @@ const GARE = [
     "nome": "Colli euganei",
     "provincia": "PD",
     "km": 50,
-    "tipo": ["moderne", "storiche"],
+    "tipo": [
+      "moderne",
+      "storiche"
+    ],
     "inizio": "",
     "fine": "",
     "location": [
